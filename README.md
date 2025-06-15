@@ -1,9 +1,9 @@
 # Budget and Savings Manager
 
 ## Team members and roles
-Soliana Getachew: 
+Soliana Getachew: Project Manager
 
-Kate Abunassar:  
+Kate Abunassar:  Business Analyst
 
 Rereloluwa Akin Babalola:  
 
