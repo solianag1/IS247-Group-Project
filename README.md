@@ -1,4 +1,4 @@
-# IS247 Group Project
+# Budget and Savings Manager
 
 ## Team members and roles
 Soliana Getachew: 
