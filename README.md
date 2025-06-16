@@ -5,11 +5,11 @@ Soliana Getachew: Project Manager
 
 Kate Abunassar:  Business Analyst
 
-Rereloluwa Akin Babalola:  
+Rereloluwa Akin Babalola: Developer
 
-Muhtada Fadlalla:  
+Muhtada Fadlalla: Quality Assurance 
 
-Ria Guddanti:  
+Ria Guddanti: Developer
 
 
 ## Description of Project
