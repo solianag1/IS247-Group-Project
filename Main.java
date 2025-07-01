@@ -1,45 +1,74 @@
-// Name: Kate Abunassar
-// Email: Katea1@umbc.edu
-
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        BankAccount account = new BankAccount(500);
+        BudgetManager budgetMgr;
 
+        // 1) Ask for initial budget
         while (true) {
-            System.out.println("\nEnter 'd' to deposit, 'w' to withdraw, or 'q' to quit:");
-            String choice = scanner.nextLine();
+            System.out.print("Enter your monthly budget amount: $");
+            try {
+                double budget = Double.parseDouble(scanner.nextLine());
+                budgetMgr = new BudgetManager(budget);
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid number. Please try again.");
+            } catch (IllegalArgumentException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        }
 
-            if (choice.equalsIgnoreCase("q")) {
-                System.out.println("Exiting program. Final balance: " + account.getBalance());
+        // 2) Main loop
+        while (true) {
+            System.out.println("\nChoose: [s]pend  [v]iew summary  [c]alculate savings days  [q]uit");
+            String choice = scanner.nextLine().trim().toLowerCase();
+
+            if (choice.equals("q")) {
+                System.out.println("Goodbye! Final summary:");
+                budgetMgr.displaySummary();
                 break;
             }
 
-            try {
-                if (choice.equalsIgnoreCase("d")) {
-                    System.out.print("Enter deposit amount: ");
-                    double amount = Double.parseDouble(scanner.nextLine());
-                    account.deposit(amount);
-                } else if (choice.equalsIgnoreCase("w")) {
-                    System.out.print("Enter withdrawal amount: ");
-                    double amount = Double.parseDouble(scanner.nextLine());
-                    account.withdraw(amount);
-                } else {
-                    System.out.println("Invalid choice. Please try again.");
-                }
-            } catch (MyCustomException e) {
-                System.out.println("Banking Exception: " + e.getMessage());
+            switch (choice) {
+                case "s":
+                    System.out.print("Enter expense amount: $");
+                    try {
+                        double amt = Double.parseDouble(scanner.nextLine());
+                        budgetMgr.spend(amt);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Please enter a valid number.");
+                    } catch (MyCustomException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
+                    break;
 
-                if (e.getMessage().toLowerCase().contains("insufficient funds")) {
-                    System.out.println("Please enter a valid withdrawal amount.");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a valid number.");
+                case "v":
+                    budgetMgr.displaySummary();
+                    break;
+
+                case "c":
+                    try {
+                        System.out.print("Enter daily saving amount: $");
+                        double daily = Double.parseDouble(scanner.nextLine());
+                        System.out.print("Enter savings goal amount: $");
+                        double goal = Double.parseDouble(scanner.nextLine());
+                        int days = SavingsCalculator.calculateDaysToGoal(daily, goal);
+                        System.out.println("You will reach your goal in " + days + " days.");
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid input. Please enter valid numbers.");
+                    } catch (MyCustomException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
+                    break;
+
+                default:
+                    System.out.println("Invalid choice—please use s, v, c, or q.");
             }
         }
 
         scanner.close();
     }
 }
+
+
