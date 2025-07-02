@@ -21,7 +21,8 @@ public class Main {
 
         // 2) Main loop
         while (true) {
-            System.out.println("\nChoose: [s]pend  [v]iew summary  [c]alculate savings days  [q]uit");
+            System.out.println("\nChoose:");
+            System.out.println("[i]ncome  [s]pend  [g]oal  [a]dd to savings  [v]iew summary  [c]alculate savings days  [q]uit");
             String choice = scanner.nextLine().trim().toLowerCase();
 
             if (choice.equals("q")) {
@@ -31,11 +32,47 @@ public class Main {
             }
 
             switch (choice) {
+                case "i":
+                    System.out.print("Enter income amount: $");
+                    try {
+                        double amt = Double.parseDouble(scanner.nextLine());
+                        budgetMgr.addIncome(amt);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid input. Please enter a number.");
+                    } catch (MyCustomException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
+                    break;
+
                 case "s":
                     System.out.print("Enter expense amount: $");
                     try {
                         double amt = Double.parseDouble(scanner.nextLine());
                         budgetMgr.spend(amt);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Please enter a valid number.");
+                    } catch (MyCustomException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
+                    break;
+
+                case "g":
+                    System.out.print("Enter your savings goal: $");
+                    try {
+                        double goal = Double.parseDouble(scanner.nextLine());
+                        budgetMgr.setSavingsGoal(goal);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Please enter a valid number.");
+                    } catch (MyCustomException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
+                    break;
+
+                case "a":
+                    System.out.print("Enter amount to add to savings: $");
+                    try {
+                        double saveAmt = Double.parseDouble(scanner.nextLine());
+                        budgetMgr.addToSavings(saveAmt);
                     } catch (NumberFormatException e) {
                         System.out.println("Please enter a valid number.");
                     } catch (MyCustomException e) {
@@ -63,12 +100,14 @@ public class Main {
                     break;
 
                 default:
-                    System.out.println("Invalid choice—please use s, v, c, or q.");
+                    System.out.println("Invalid choice — use one of the listed options.");
             }
         }
 
         scanner.close();
     }
 }
+
+
 
 
