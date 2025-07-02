@@ -62,7 +62,12 @@ public class BudgetManager extends FinancialAccount implements Trackable {
             System.out.println("You have reached your monthly budget limit.");
         }
     }
- 
+    
+    public void spend(String description, double amount) throws MyCustomException {
+        System.out.println("Spending on: " + description);
+        spend(amount); // Reuse original method
+        
+    }
     /**
      * Sets the user’s savings goal.
      */
@@ -105,5 +110,15 @@ public class BudgetManager extends FinancialAccount implements Trackable {
         System.out.printf("Savings goal:       $%.2f%n", savingsGoal);
         System.out.printf("Total saved:        $%.2f%n", totalSaved);
     }
+    
+    /**
+     * Overrides the track method from the Trackable interface.
+     */
+    @Override
+    public void track() {
+        System.out.printf("Tracking Budget - Spent: $%.2f / $%.2f | Saved: $%.2f / $%.2f%n",
+                totalSpent, monthlyBudget, totalSaved, savingsGoal);
+    }
 }
+
 
