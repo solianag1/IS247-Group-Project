@@ -14,21 +14,23 @@ Ria Guddanti: Developer
 
 ## Project Description
 
-Budget and Savings Manager is a personal finance tracker designed to help users take control of their financial habits. The application allows users to:
+Budget and Savings Manager is a personal finance tracker designed to help users take control of their financial habits. 
 
-Set a monthly budget
+**The application allows users to:**
 
-Track expenses and receive alerts for overspending
+-Set a monthly budget
 
-Log income to calculate available earnings
+-Track expenses and receive alerts for overspending
 
-Set and monitor savings goals
+-Log income to calculate available earnings
 
-Estimate how many days it will take to reach a savings goal.
+-Set and monitor savings goals
+
+-Estimate how many days it will take to reach a savings goal.
 
 The goal of this project is to make responsible financial habits easier to maintain by providing an interactive command-line interface that supports budgeting, saving, and financial awareness.
 
-Features
+**Features**
 Set Monthly Budget: Users begin by entering their monthly budget amount.
 
 Track Spending: Users can enter expenses and receive warnings when they are within $50 of their budget or if they exceed it.
@@ -48,7 +50,13 @@ Choose: [i]ncome  [s]pend  [v]iew summary  [c]alculate savings days  [q]uit
 JavaDoc
 This project includes comprehensive JavaDoc comments. After generating JavaDocs using IntelliJ or the terminal, documentation can be viewed through GitHub Pages:
 
-
+### Class Overview
+- `Main.java`: Runs the full program
+- `BudgetManager.java`: Manages monthly budget and spending alerts
+- `FinancialAccount.java`: Handles account balance and transactions
+- `GoalTracker.java`: Tracks savings goal progress
+- `SavingsCalculator.java`: Uses recursion to calculate savings timeline
+- `Trackable.java`: Interface for polymorphism
 
 
 
