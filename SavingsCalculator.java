@@ -17,6 +17,7 @@ public class SavingsCalculator {
         if (dailyAmount <= 0 || savingsGoal <= 0) {
             throw new MyCustomException("Amounts must be greater than zero.");
         }
+        // Use a helper method to track days
         return calculateRecursive(dailyAmount, savingsGoal, 0);
     }
 
