@@ -52,7 +52,7 @@ Organized Structure: Code is modular and organized into separate classes: Main, 
 Example Menu Output
 Choose: [i]ncome  [s]pend  [v]iew summary  [c]alculate savings days  [q]uit
 JavaDoc
-This project includes comprehensive JavaDoc comments. After generating JavaDocs using IntelliJ or the terminal, documentation can be viewed through GitHub Pages:
+This project includes comprehensive JavaDoc comments. After generating JavaDocs using IntelliJ or the terminal, documentation can be viewed through GitHub Pages: [View JavaDocs](https://solianag1.github.io/IS247-Group-Project/)
 
 ### Class Overview
 - `Main.java`: Runs the full program
