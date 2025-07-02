@@ -1,5 +1,9 @@
 import java.util.Scanner;
 
+/**
+ * This is the entry point of the Budget Management App.
+ * It handles user interaction through the console and connects with the BudgetManager and SavingsCalculator classes.
+ */
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
