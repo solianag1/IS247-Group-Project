@@ -3,7 +3,7 @@
  * It provides methods to add income, track spending, set savings goals, and check alerts for low budget.
  * This class uses exception handling to manage invalid inputs like negative or zero values.
  */
-public class BudgetManager {
+public class BudgetManager extends FinancialAccount implements Trackable {
     private double monthlyBudget;
     private double totalSpent;
     private double totalIncome;
