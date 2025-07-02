@@ -1,6 +1,7 @@
 /**
- * The BudgetManager class tracks a monthly spending budget, income, and savings.
- * It alerts the user when they approach or exceed budget limits and tracks savings goals.
+ * BudgetManager is the main class used to manage the user's budget, income, expenses, and savings.
+ * It provides methods to add income, track spending, set savings goals, and check alerts for low budget.
+ * This class uses exception handling to manage invalid inputs like negative or zero values.
  */
 public class BudgetManager {
     private double monthlyBudget;
@@ -8,7 +9,9 @@ public class BudgetManager {
     private double totalIncome;
     private double savingsGoal;
     private double totalSaved;
-
+ /**
+     * Constructor that sets the monthly budget. Throws an exception if the budget is invalid.
+     */
     public BudgetManager(double monthlyBudget) {
         if (monthlyBudget <= 0) {
             throw new IllegalArgumentException("Budget must be greater than zero.");
@@ -19,7 +22,10 @@ public class BudgetManager {
         this.savingsGoal = 0;
         this.totalSaved = 0;
     }
-
+  
+    /**
+     * Adds income to the total. Throws exception if input is invalid.
+     */
     public void addIncome(double amount) throws MyCustomException {
         if (amount <= 0) {
             throw new MyCustomException("Income must be greater than zero.");
@@ -28,6 +34,9 @@ public class BudgetManager {
         System.out.printf("Added $%.2f income. Total income: $%.2f%n", amount, totalIncome);
     }
 
+      /**
+     * Spends money and increases the total spent. Warns if close to or over budget.
+     */
     public void spend(double amount) throws MyCustomException {
         if (amount <= 0) {
             throw new MyCustomException("Expense amount must be greater than zero.");
@@ -53,7 +62,10 @@ public class BudgetManager {
             System.out.println("You have reached your monthly budget limit.");
         }
     }
-
+ 
+    /**
+     * Sets the user’s savings goal.
+     */
     public void setSavingsGoal(double goal) throws MyCustomException {
         if (goal <= 0) {
             throw new MyCustomException("Savings goal must be greater than zero.");
@@ -63,6 +75,9 @@ public class BudgetManager {
         System.out.println("Savings goal set to $" + goal);
     }
 
+    /**
+     * Adds money to savings.
+     */
     public void addToSavings(double amount) throws MyCustomException {
         if (amount <= 0) {
             throw new MyCustomException("Saved amount must be greater than zero.");
@@ -77,6 +92,9 @@ public class BudgetManager {
         }
     }
 
+    /**
+     * Displays a summary of budget, spending, income, and savings.
+     */
     public void displaySummary() {
         System.out.println("\n--- Budget Summary ---");
         System.out.printf("Original budget:    $%.2f%n", monthlyBudget);
