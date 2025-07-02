@@ -16,6 +16,10 @@ Ria Guddanti: Developer
 
 Budget and Savings Manager is a personal finance tracker designed to help users take control of their financial habits. 
 
+### Notes
+This project was created as a add on of Lab 1 Banking for our Java + Docker group assignment. It demonstrates core OOP
+principles, recursion, and basic user input/output in Java.
+
 **The application allows users to:**
 
 -Set a monthly budget
