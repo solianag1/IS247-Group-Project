@@ -1,3 +1,6 @@
+import java.util.Scanner;
+import java.util.Random;
+
 /**
  * The SavingsCalculator class provides a utility method to calculate
  * how many days it will take to reach a savings goal using daily saving amounts.
@@ -7,25 +10,32 @@
 public class SavingsCalculator {
 
     /**
-     * Calculates how many days it takes to reach the savings goal.
-     * @param dailyAmount The amount saved per day.
-     * @param savingsGoal The total goal to reach.
-     * @return Number of days to reach the goal.
-     * @throws MyCustomException if the input values are invalid.
+     * Recursively calculates days needed to reach the savings goal.
+     * @param goal The target amount
+     * @param dailyAmount How much is saved each day
+     * @return Number of days needed
      */
-    public static int calculateDaysToGoal(double dailyAmount, double savingsGoal) throws MyCustomException {
-        if (dailyAmount <= 0 || savingsGoal <= 0) {
-            throw new MyCustomException("Amounts must be greater than zero.");
+    public static int calculateDays(double goal, double dailyAmount) {
+        if (goal <= 0) {
+            return 0;
+        } else {
+            return 1 + calculateDays(goal - dailyAmount, dailyAmount);
         }
-        // Use a helper method to track days
-        return calculateRecursive(dailyAmount, savingsGoal, 0);
     }
 
-    // Private helper method that uses recursion
-    private static int calculateRecursive(double dailyAmount, double savingsGoal, int days) {
-        if (dailyAmount * days >= savingsGoal) {
-            return days;
-        }
-        return calculateRecursive(dailyAmount, savingsGoal, days + 1);
+    /**
+     * Starts the calculator by simulating a random daily savings amount.
+     */
+    public static void startCalculator() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter your savings goal: $");
+        double goal = scanner.nextDouble();
+
+        Random random = new Random();
+        double daily = 5 + random.nextDouble() * 15; // random between $5 and $20
+        System.out.printf("Simulated daily savings: $%.2f%n", daily);
+
+        int days = calculateDays(goal, daily);
+        System.out.println("It will take about " + days + " days to reach your goal.");
     }
 }
